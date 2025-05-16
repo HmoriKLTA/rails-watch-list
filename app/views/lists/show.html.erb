@@ -4,6 +4,8 @@
     <%= f.submit "Bookmark", class:"btn btn-primary mt-3" %>
   <% end %>
 
+
   <%= link_to "Back to Home", lists_path, class: "btn btn-gradient" %>
 
-<%# <%= f.input :comment %>
+
+<%= f.input :photo, as: :file %>

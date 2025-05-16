@@ -36,6 +36,6 @@ class ListsController < ApplicationController
   # Defines a strong parameters method for List
   def list_params
     # Ensures that the request includes a :list parameter and only permits the :name attribute
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, :photo)
   end
 end
