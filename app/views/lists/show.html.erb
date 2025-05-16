@@ -1,11 +1,7 @@
-
-  <%= simple_form_for [@list, @bookmark] do |f| %>
-    <%= f.association :movie, collection: @movies, prompt: 'Select Movie', label: false %>
-    <%= f.submit "Bookmark", class:"btn btn-primary mt-3" %>
+<% @list.bookmarks.each do |bookmark| %>
+  <%= bookmark.movie.title %>
   <% end %>
 
+<%= render 'bookmarks/form' %>
 
-  <%= link_to "Back to Home", lists_path, class: "btn btn-gradient" %>
-
-
-<%= f.input :photo, as: :file %>
+<%= link_to "Back to Home", lists_path, class: "btn btn-gradient" %>

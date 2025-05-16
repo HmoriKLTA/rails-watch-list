@@ -9,13 +9,13 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   root to: 'lists#index'
-  resources :lists, only: %i[show new create] do
+  resources :lists, only: %i[index show new create] do
     resources :bookmarks, only: %i[new create destroy]
   end
 end
 
-# get '/lists', to: 'lists#index'
-# get '/lists/:id', to: 'lists#show'
+# get '/lists', to: 'lists#index'    lists_path && root_path
+# get '/lists/:id', to: 'lists#show' list_path(id)
 # get '/lists/new', to: 'lists#new'
 # patch '/lists/:id', to: 'lists#update'
 # post '/lists', to: "lists#create"

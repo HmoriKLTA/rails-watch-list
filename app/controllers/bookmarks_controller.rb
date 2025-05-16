@@ -14,19 +14,19 @@ class BookmarksController < ApplicationController
     # Finds the corresponding List based on the ID parameter
     @bookmark.list = @list
     # Attempts to save the Bookmark to the database
+
     if @bookmark.save
       # Redirects to the form for creating another bookmark
       redirect_to list_path(@list), notice: 'Bookmark was successfully created.'
     else
-      # Re-renders the 'new' form with an error status if validation fails
-      render :new, status: :unprocessable_entity
+      # Re-renders the 'lists/show' form with an error status if validation fails
+      render 'lists/show', status: :unprocessable_entity
     end
   end
 
   def destroy
     @bookmark = Bookmark.find(params[:id])
     @bookmark.destroy
-    # redirect_to haunted_house_path(@bookmark.haunted_house), status: :see_other
   end
 
   private
@@ -34,6 +34,6 @@ class BookmarksController < ApplicationController
   # Private method to enforce strong parameters for the Bookmark model
   def bookmark_params
     # Ensures that the request includes a :bookmark parameter and only permits :comment and :list_id attributes
-    params.require(:bookmark).permit(:comment, :list_id)
+    params.require(:bookmark).permit(:comment, :movie_id)
   end
 end
