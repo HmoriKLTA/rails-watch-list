@@ -13,6 +13,7 @@ class ListsController < ApplicationController
   # Defines a method called 'new' to initialize a new List object
   def new
     @list = List.new # Creates a new instance of the List model
+    @movies = Movie.all
   end
 
   # Defines a method called 'create' to handle form submissions and save a new List object
@@ -23,8 +24,9 @@ class ListsController < ApplicationController
     # Attempts to save the new List object to the database
     if @list.save
       # Redirects to the newly created list's page with a success message
-      redirect_to lists_path, notice: 'List was successfully created.'
+      redirect_to lists_path(@list)
     else
+      @movies = Movie.all
       # Re-renders the 'new' form with an error status if validation fails
       render :new, status: :unprocessable_entity
     end

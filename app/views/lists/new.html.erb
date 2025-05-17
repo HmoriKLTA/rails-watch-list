@@ -1,10 +1,13 @@
-<div class="container">
-  <h1>Create a new list</h1>
-  <%= simple_form_for [@list] do |f| %>
-    <%= f.input :name %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit 'Create', class: 'btn btn-danger mt-3' %>
-  <% end %>
+<!--Navbar-->
+<%= render 'lists/navbar' %>
 
-  <%= link_to "Back to Home", lists_path, class: "btn btn-gradient" %>
+<!--Banner-->
+<%= render 'lists/banner' %>
+
+<!--Create Form -->
+<div class="new-form ">
+  <%= render 'bookmarks/newform' %>
 </div>
+
+<!--Footer-->
+<%= render 'lists/footer' %>

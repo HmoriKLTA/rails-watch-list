@@ -1,7 +1,37 @@
-<% @list.bookmarks.each do |bookmark| %>
-  <%= bookmark.movie.title %>
-  <% end %>
+<!--NavBar -->
+<%= render 'lists/navbar' %>
 
-<%= render 'bookmarks/form' %>
+<!--Banner -->
+<div class="banner mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://gaijinpot.scdn3.secure.raxcdn.com/app/uploads/sites/6/2016/02/Mount-Fuji-New.jpg);">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+      <%= link_to root_path, class:"btn btn-gradient fa-solid fa-house btn-lg" do  %>
+      <% end %>
+    <%= link_to "Create a new list", new_list_path, class: "btn btn-gradient" %>
+  </div>
+</div>
 
-<%= link_to "Back to Home", lists_path, class: "btn btn-gradient" %>
+<!--Cards-->
+
+
+<!--form-->
+<div class="row">
+  <div class="col-md-8">
+    <div class="cards mx-3">
+      <% @list.bookmarks.each do |bookmark| %>
+        <div class="show-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.squarespace-cdn.com/content/v1/5ab43e2c96e76f77f5028a53/1521927701322-SKLIYPHDLER5F0VVMQGZ/DE8742C1-2ED5-4BF0-BB4A-A197AB27A70F.png)">
+          <%= bookmark.movie.title %>
+          <%# <%= bookmark.movie.overview %>
+          <br>
+          <%# <%= bookmark.comment %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  <%= render 'bookmarks/bookmarkform' %>
+</div>
+
+<!--Footer-->
+<div>
+  <%= render 'lists/footer' %>
+</div>

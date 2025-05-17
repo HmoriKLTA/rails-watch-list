@@ -1,4 +1,24 @@
-<% @lists.each do |list| %>
-        <%= link_to list.name, list_path(list) %>
+<!--Navbar-->
+<%= render 'lists/navbar' %>
+
+<!--Banner-->
+<%= render 'lists/banner' %>
+
+<!-- Alert -->
+<% if flash[:notice] %>
+  <div class="🎉 alert alert-success">  <%# Use a Bootstrap alert, or your own styling %>
+    <%= flash[:notice] %>
+  </div>
 <% end %>
-  <%= link_to "Create a new list", new_list_path, class: "btn btn-gradient" %>
+
+<!--Cards -->
+<div class="cards mx-3 ">
+  <% @lists.each do |list| %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.squarespace-cdn.com/content/v1/5ab43e2c96e76f77f5028a53/1521927701322-SKLIYPHDLER5F0VVMQGZ/DE8742C1-2ED5-4BF0-BB4A-A197AB27A70F.png)">
+      <%= link_to list.name, list_path(list), style:'text-decoration: none; color:white;' %>
+    </div>
+  <% end %>
+</div>
+
+<!--Footer-->
+<%= render 'lists/footer' %>

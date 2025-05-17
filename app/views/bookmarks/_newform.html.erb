@@ -1,0 +1,8 @@
+<h1 class='d-flex justify-content-center align-items-center'>Create New List</h1>
+
+<div class="new-form d-flex justify-content-center align-items-center">
+  <%= simple_form_for [@list] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit 'Create', class: 'btn btn-gradient' %>
+  <% end %>
