@@ -1,10 +1,14 @@
-<div class='show-form col-md-4' >
-  <div class="bookmark-form mt-3 mx-3 ">
-    <h1>New review</h1>
-    <%= simple_form_for [list, review] do |f| %>
-    <%= f.input :content %>
-    <%= f.input :rating %>
-    <%= f.submit "Submit review", class: "btn btn-primary" %>
+<div class="d-flex justify-content-center align-items-center">
+  <div class="card bg-dark text-light shadow p-4" style="min-width: 350px;">
+    <h1 class="text-center my-4 text-light">Create New Review</h1>
+    <%= simple_form_for [list, review], html: { class: "needs-validation" } do |f| %>
+      <div class="mb-3">
+        <%= f.input :content, input_html: { class: "form-control" }, label_html: { class: "form-label" } %>
+      </div>
+      <div class="mb-3">
+        <%= f.input :rating, input_html: { class: "form-control" }, label_html: { class: "form-label" } %>
+      </div>
+      <%= f.button :submit, 'Submit Review', class: 'btn btn-primary w-100' %>
     <% end %>
   </div>
 </div>

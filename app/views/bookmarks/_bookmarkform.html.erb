@@ -1,11 +1,14 @@
-
-<div class='show-form col-md-4' >
-  <h1>New bookmark</h1>
-  <div class="bookmark-form mt-3 mx-3 ">
-    <%= simple_form_for [list, bookmark] do |f| %>
-      <%= f.association :movie, collection: Movie.all, prompt: 'Select Movie', label: false %>
-      <%= f.input :comment %>
-      <%= f.submit "Bookmark", class:"btn btn-primary mt-3" %>
+<div class="d-flex justify-content-center align-items-center">
+  <div class="card bg-dark text-light shadow p-4" style="min-width: 350px;">
+    <h1 class="text-center my-4 text-light">New Bookmark</h1>
+    <%= simple_form_for [list, bookmark], html: { class: "needs-validation" } do |f| %>
+      <div class="mb-3">
+        <%= f.association :movie, collection: Movie.all, prompt: 'Select Movie', label: false %>
+      </div>
+      <div class="mb-3">
+        <%= f.input :comment, input_html: { class: "form-control" }, label_html: { class: "form-label" } %>
+      </div>
+      <%= f.button :submit, 'Submit Bookmark', class: 'btn btn-primary w-100' %>
     <% end %>
   </div>
 </div>

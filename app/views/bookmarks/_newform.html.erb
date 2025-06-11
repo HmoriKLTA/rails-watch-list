@@ -1,8 +1,14 @@
-<h1 class='d-flex justify-content-center align-items-center'>Create New List</h1>
-<div class="new-form d-flex justify-content-center align-items-center">
-  <%= simple_form_for [@list] do |f| %>
-    <%= f.input :name %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit 'Create', class: 'btn btn-primary' %>
-  <% end %>
+<div class="d-flex justify-content-center align-items-center">
+  <div class="card bg-dark text-light shadow p-4" style="min-width: 350px;">
+    <h1 class="text-center my-4 text-light">Create New List</h1>
+    <%= simple_form_for [@list], html: { class: "needs-validation" } do |f| %>
+      <div class="mb-3">
+        <%= f.input :name, input_html: { class: "form-control" }, label_html: { class: "form-label" } %>
+      </div>
+      <div class="mb-3">
+        <%= f.input :photo, as: :file, input_html: { class: "form-control" }, label_html: { class: "form-label" } %>
+      </div>
+      <%= f.button :submit, 'Create', class: 'btn btn-primary w-100' %>
+    <% end %>
+  </div>
 </div>
