@@ -5,9 +5,10 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id]) # Retrieving a specific record from the List model using its ID parameter
-    @list.bookmarks # Accessing associated bookmarks for the @list object
+    @list.bookmarks.new # Accessing associated bookmarks for the @list object
     @movies = Movie.all # Retrieving all records from the Movie model and storing them in an instance variable
     @bookmark = Bookmark.new # Creating a new instance of the Bookmark model without saving it to the database
+    @review = @list.reviews.new # Creating a new instance of the Review model associated with the @list object.
   end
 
   # Defines a method called 'new' to initialize a new List object
@@ -28,7 +29,7 @@ class ListsController < ApplicationController
     else
       @movies = Movie.all
       # Re-renders the 'new' form with an error status if validation fails
-      render :new, status: :unprocessable_entity
+      render 'lists/show', status: :unprocessable_entity
     end
   end
 

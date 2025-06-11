@@ -1,16 +1,9 @@
-<!--Navbar-->
-<%= render 'lists/navbar' %>
-
-<!--Banner-->
-<%= render 'lists/banner' %>
-
 <!-- Alert -->
 <% if flash[:notice] %>
   <div class="🎉 alert alert-success">  <%# Use a Bootstrap alert, or your own styling %>
     <%= flash[:notice] %>
   </div>
 <% end %>
-
 <!--Cards -->
 <div class="cards mx-3 ">
   <% @lists.each do |list| %>
@@ -19,6 +12,4 @@
     </div>
   <% end %>
 </div>
-
 <!--Footer-->
-<%= render 'lists/footer' %>

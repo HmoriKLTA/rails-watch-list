@@ -1,11 +1,11 @@
+
 <div class='show-form col-md-4' >
-  <form>
-    <div class="bookmark-form mt-3 mx-3 ">
-      <%= simple_form_for [@list, @bookmark] do |f| %>
-        <%= f.association :movie, collection: @movies, prompt: 'Select Movie', label: false %>
-        <%= f.input :comment %>
-        <%= f.submit "Bookmark", class:"btn btn-primary mt-3" %>
-      <% end %>
-    </div>
-  </form>
+  <h1>New bookmark</h1>
+  <div class="bookmark-form mt-3 mx-3 ">
+    <%= simple_form_for [list, bookmark] do |f| %>
+      <%= f.association :movie, collection: Movie.all, prompt: 'Select Movie', label: false %>
+      <%= f.input :comment %>
+      <%= f.submit "Bookmark", class:"btn btn-primary mt-3" %>
+    <% end %>
+  </div>
 </div>

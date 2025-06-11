@@ -8,9 +8,18 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
+  # Set the root URL ("/") to got to the lists#index action
   root to: 'lists#index'
+  # Define the routes for the lists resource
+  # Only allow index, show, new, and create actions for lists.
   resources :lists, only: %i[index show new create] do
+    # Nested resources for bookmarks and reviews within lists
+    # Only allow new and create actions for bookmarks and reviews.
     resources :bookmarks, only: %i[new create destroy]
+
+    # Nest routes: reviews belong to a list
+    # Only allow new and create actions for reviews.
+    resources :reviews, only: %i[new create]
   end
 end
 
@@ -27,20 +36,5 @@ end
 
 # post '/bookmarks', to: "bookmarks#create"
 # delete '/bookmarks/:id', to: "bookmarks#destroy"
-
-# A user can see all the lists
-# GET "lists"
-
-# A user can see the details of a given list and its name
-# GET "lists/42"
-
-# A user can create a new list
-# GET "lists/new"
-# POST "lists"
-
-# A user can add a new bookmark (movie/list pair) to an existing list
-# GET "lists/42/bookmarks/new"
-# POST "lists/42/bookmarks"
-
-# A user can delete a bookmark from a list. How can we make a delete link again?
-# DELETE "bookmarks/25"
+# get '/bookmarks/:id/edit', to: "bookmarks#edit"
+# patch '/bookmarks/:id', to: "bookmarks#update"
